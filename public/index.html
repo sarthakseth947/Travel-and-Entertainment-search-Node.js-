@@ -1,0 +1,2034 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+<style type="text/css">
+	#map {
+        height: 400px;
+       
+    
+  }
+        #hero {
+        height: 35px;
+        width: 23px;
+       
+   }
+   .hero1 {
+        height: 35px;
+        width: 30px;
+       
+   }
+</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <title>Hello, world!</title>
+  </head>
+
+
+
+
+
+
+
+  <body>
+    <div class="container  " style="background-color: #E8E8E8; outline:1px solid  gray; margin-top: 5px;
+" >
+    	<div class="row" >
+<div class="col-md-8 offset-md-2 col-sm-9 offset-sm-1" >
+	<h2 style="margin-left: 26%; font-size: 20px; margin-top:2%; margin-bottom: 2%;">Travel and Entertainment Search </h2>
+	
+
+	<form id="form" class="needs-validation" >
+
+
+
+		<div class="form-group row">
+			<div class="col-md-1">
+			<label for="keyword"   class=" col-form-label" style="font-size: 14px">Keyword</label>
+			</div>
+			<div class="col-md-9 offset-md-2">
+			<input type="text" name="keyword1" onfocus="def();" onblur="validateFunction();" class="form-control " id="keyword" >
+			   <div style="font-size: 12px;color: #EB1414;" id="invalid">
+         
+        </div>
+			</div>
+
+
+		</div>
+		
+<div class="form-group row">
+	<div class="col-md-1 col-sm-2">
+		<label for="Category" class="col-form-label" style="font-size: 14px">Category</label>
+	</div>
+	<div class="col-md-6 offset-md-2 ">
+		<select style="border-color: #ccc" class="form-control form-control-lg" id="Category">
+    			<option value="Default" selected >Default</option>
+				<option value="airport" >Airport</option>
+				<option value="amusement_park">Amusement Park</option>
+				<option value="aquarium">Aquarium</option>
+				<option value="art_gallery">Art Gallery</option>
+				<option value="bakery">Bakery</option>
+				<option value="bar">Bar</option>
+				<option value="beauty_salon">Beauty Salon</option>
+				<option value="bowling_alley">Bowling Alley</option>
+				<option value="bus_station">Bus Station</option>
+				<option value="cafe">Cafe</option>
+				<option value="campground">Campground</option>
+				<option value="car_rental">Car Rental</option>
+				<option value="casino">Casino</option>
+				<option value="lodging">Lodging</option>
+				<option value="movie_theater">Movie Theater</option>
+				<option value="museum">Museum</option>
+				<option value="night_club">Night Club</option>
+				<option value="park">Park</option>
+				<option value="parking">Parking</option>
+				<option value="restaurant">Restaurant</option>
+				<option value="shopping_mall">Shopping Mall</option>
+				<option value="stadium">Stadium</option>
+				<option value="subway_station">Subway Station</option>
+				<option value="taxi_stand">Taxi Stand</option>
+				<option value="train_station">Train Station</option>
+				<option value="transit_station">Transit Station</option>
+				<option value="travel_agency">Travel Agency</option>
+				<option value="zoo">Zoo</option>
+				
+
+    		</select>
+
+		
+
+	</div>
+
+</div>
+
+<div class="form-group row">
+	<div class="col-md-1 col-sm-1">
+		<label  for="Distance" class="col-form-label" style="font-size: 14px">Distance(miles)
+		</label>
+		</div>
+	<div class="col-md-6 offset-md-2 ">
+		<input type="text" style="border-color: #ccc" name="Distance1" id="Distance" class="form-control" placeholder="10">
+		
+	</div>
+
+</div>
+
+<div class="form-group row">
+	<div class="col-md-1 ">
+<h1 style="font-size: 14px; font-weight: normal;">From</h1>
+</div>
+<div class="col-md-9 offset-md-2 ">
+<input type="radio" name="Current" id="loc" class="form-check-label" checked>
+ 	Current location
+ 	<br>
+ 		<input type="radio" name="Current" id="loc1" class="form-check-label">
+		Other. Please specify:
+		<br>
+		<div class="col-md-12 ">
+		<input type="text" id="loctext" onfocus="abc();" onblur="validateFunction1();"  name="enteralocation" class="form-control " placeholder="Enter a location" disabled required>
+			   <div style="font-size: 12px;color: #EB1414;" id="invalid1">
+   
+        </div>
+		</div>
+</div>
+
+
+</div>
+<div class="form-group row">
+<div class="col-md-12 ">
+	<button type="button" class="btn btn-primary " id="search"> <span class="glyphicon glyphicon-search"></span>Search
+		</button>
+	<button type="reset" class="btn btn-outline-dark " id="res" style="background-color: white; outline:1px solid  gray; ">Clear</button>
+
+	</div>
+</div>
+	</form>
+
+
+</div>
+
+
+
+    	</div>
+    </div>
+    <div style="margin-top: 2%;"  class="col-8 offset-3 col-md-5 offset-md-5 col-sm-5 offset-sm-4 col-xl-5 offset-xl-5">
+    	
+<button type="button"  id="results" class="btn btn-outline-primary active ">Results</button>
+<button type="button" id="favtester" class="btn btn-outline-primary ">Favorites</button>
+
+    </div>
+   
+<div id="heading" style="margin-top: 2%;"  >
+	
+</div>
+
+
+<div id="det" style="margin-bottom: 2%" class="col-md-12 offset-md-1 col-lg-12 offset-lg-1    ">
+	
+</div>
+
+    <div class="col-2 offset-9 col-md-2 offset-md-9 col-lg-2 offset-lg-9 " id="aloo">
+    	
+
+    </div>
+    <div id="tabs" style="margin-bottom: 2%;height: 100%" class="col-md-10 offset-md-1">
+    	
+
+    </div>
+<div id="tab" class="col-md-10 offset-md-1 col-lg-10 offset-lg-1">
+	
+</div>
+
+<div id="details1">
+	</div>
+
+<div class="col-md-10 offset-md-1 col-lg-10 offset-lg-1" id="hello">
+	
+</div>
+
+
+
+    <!-- Optional Java]Script -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script >
+function autocomplete(){
+	var input=document.getElementById('loctext');
+	var autocomplete=new google.maps.places.Autocomplete(input);
+
+
+}
+
+</script>
+<script type="text/javascript">
+
+</script>
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+
+
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+    $("body").ready(function(){
+        $("#search").prop('disabled',true);
+
+url="http://ip-api.com/json";
+		
+$.get(url,function(data,statusTxt,xhr){
+
+
+
+	lat=data.lat;
+	lon=data.lon
+	console.log(lat);
+if(typeof(lat)=="undefined"){$("#search").prop('disabled',true);
+}
+	if((document.getElementById('keyword').value=="")&&(document.getElementById('loctext').value=="")){
+
+
+$("#search").prop('disabled',true);
+
+	}
+})
+
+
+
+    });
+});
+
+$("#keyword").keyup(function(){
+	if((typeof(lat)!="undefined"))
+    $("#search").prop('disabled',false);
+});
+
+function def(){
+$("#keyword").css("border-color", "#ccc");
+$("#invalid").html(" ");
+}
+function abc(){
+$("#loctext").css("border-color", "#ccc")
+$("#invalid1").html(" ");
+}
+function validateFunction(){
+var str=document.getElementById('keyword').value
+	if(str.trim()==""){
+		$("#keyword").css("border-color", "#EB1414")
+		$("#invalid").html(" Please enter a keyword");
+
+	}
+
+	else{if((typeof(lat)!="undefined"))
+		$("#search").prop('disabled',false);}
+}
+
+function validateFunction1(){
+var str1=document.getElementById('loctext').value
+	if(str1.trim()==""){
+		$("#loctext").css("border-color", "#EB1414")
+		$("#invalid1").html(" Please enter a location");
+	}else{if((typeof(lat)!="undefined"))
+		$("#search").prop('disabled',false);}
+}
+
+$("#res").click(function(){
+	$("#heading").html("");
+	$("#det").html("");
+	$("#tab").html("");
+	$("#tabs").html("");
+	$("#aloo").html("");
+	$("#details1").html("");
+	$("#hello").html("");
+})
+
+$("#loc").click(function(){
+	$("#loctext").attr("disabled",true);
+})
+$("#loc1").click(function(){
+	$("#loctext").removeAttr("disabled");
+})
+
+ $("#search").click(function(){
+ 	var keyword1=$("#keyword").val();
+ 	  keyword=encodeURI(keyword1);
+ 	 console.log(keyword);
+ 	var Distance1=$("#Distance").val();
+ 	if(Distance1=="")
+ 		{ Distance=16090;}
+ 	else{
+ 	 Distance=Distance1*1609;}
+ 	 type=$("#Category").val();
+ 
+
+if($("#loc").is(":checked")){
+ 	 latitude=lat;
+ 	 longitude=lon;
+ 	console.log(latitude);
+  $.ajax({
+        url: "/info?keyword=" + keyword + "&Distance=" + Distance +"&type=" + type + "&lat=" + latitude+"&lon=" + longitude,
+         
+           
+        type: "GET",
+
+        success: function(data) {
+            var acData = data;
+     console.log(acData);
+     generatetable(acData,latitude,longitude);
+        }
+    });
+
+}
+else{
+
+	var info=$("#loctext").val();
+	
+	$.ajax({
+        url: "/data?keyword=" + info + "&Distance=" + Distance +"&type=" + type+ "&keyword1=" + keyword,
+         
+           
+        type: "GET",
+
+        success: function(data) {
+            var acData1 = data;
+lat1=data.results[0].geometry.location.lat;
+	      	 lon1=data.results[0].geometry.location.lng;
+    gentab(lat1,lon1);
+    
+        }
+    });
+ 
+
+
+
+
+}
+
+ })
+
+
+
+
+
+
+function gentab(lat1,lon1){
+ 
+
+
+
+	latitude=lat1;
+ 	longitude=lon1;
+ 	console.log(latitude);
+  $.ajax({
+        url: "/info?keyword=" + keyword + "&Distance=" + Distance +"&type=" + type + "&lat=" + latitude+"&lon=" + longitude,
+         
+           
+        type: "GET",
+
+        success: function(data) {
+            var acData = data;
+     console.log(acData);
+     generatetable(acData,latitude,longitude);
+
+     console.log(localStorage.getItem("personalize"));
+        }
+    });
+}
+
+
+
+
+
+
+function generatetable(acData,latitude,longitude){
+
+if(acData.status=="ZERO_RESULTS"){
+
+	htmtext="<table  id=\"table\" class=\"table table-warning\">"
+	htmtext+="<thead><tr><th scope=\"col\">No Records</th></tr><thead>";
+	$("#tab").html(htmtext);
+	return;
+}
+if(acData.status=="INVALID_REQUEST"){
+
+	htmtext="<table  id=\"table\" class=\"table table-danger\">"
+	htmtext+="<thead><tr><th scope=\"col\">Failed to get search results</th></tr><thead>";
+	$("#tab").html(htmtext);
+	return;
+}
+
+
+
+$("#det").hide();
+$("#heading").hide();
+$("#tabs").hide();
+ html_text="<div class=\"progress\"><div class=\"progress-bar progress-bar-striped\" role=\"progressbar\" style=\"width: 50%\" aria-valuenow=\"50\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div></div>";
+ 
+
+
+		$("#tab").html(html_text);
+			   $("#aloo").show();
+			   $("#hello").show();
+			    console.log(localStorage.getItem("personalize"));
+		var names = [];
+lat1=[];
+			lon1=[];
+
+			
+			var results=acData.results;
+		
+		html_text="";	
+		
+html_text+="<table  id=\"table\" class=\"table table-hover\" align=\"center\">";
+			html_text+="<thead><tr><th scope=\"col\">#</th><th scope=\"col\">Category</th><th scope=\"col\">Name</th><th scope=\"col\">Address</th><th scope=\"col\">Favorite</th><th scope=\"col\">Details</th></tr></thead>";
+			for(i=0;i<results.length;i++)
+			{var abclong=latitude;
+			var abclat=longitude;
+				selectedObj=results[i];
+				lat1[i]=results[i].geometry.location.lat;
+				lon1[i]=results[i].geometry.location.lng;
+
+				var lockeys=Object.keys(selectedObj);
+				for(j=0;j<lockeys.length;j++)
+					{if(lockeys[j]=="icon")
+					{	categoru=selectedObj[lockeys[j]];}
+						if(lockeys[j]=="name")
+							{name=selectedObj[lockeys[j]];}
+						if(lockeys[j]=="vicinity")
+							{vicinity=selectedObj[lockeys[j]];}
+						if(lockeys[j]=="place_id")
+							{placeid=selectedObj[lockeys[j]];}
+
+					}plac1=placeid;
+			
+					name1= name.replace("'", "");
+			html_text+=" <tbody><tr onclick=\"hoverba(this.id,'"+plac1+"',lat1["+i+"],lon1["+i+"],"+latitude+","+longitude+");\" id="+(i+100)+"><th scope=\"row\">"+(i+1)+"</th><td ><img src="+categoru+"></img></td><td class=\" td1\" >"+name+"</td><td class=\" td1\" id=\"vic\">"+vicinity+"</td><td><button  style=\"border-color: #ccc\" type=\"button\" class=\"btn btn-light " +i+"  \" style=\"color: #000000\" onclick=\" testagain("+i+",'"+name1+"','"+vicinity+"','"+placeid+"','"+categoru+"',"+latitude+","+longitude+");\"><span class=\"glyphicon glyphicon-star-empty\"></span> </button></td><td><button type=\"border-color: #ccc\"   type=\"button\"  onclick=\"generatedetails('"+placeid+"',lat1["+i+"],lon1["+i+"],"+latitude+","+longitude+");\" class=\"btn btn-light \" id=\"Details\"><span class=\"glyphicon glyphicon-chevron-right\"></span> </td></tr></tbody>";
+			
+
+		
+			}
+		html_text +=" </table>";
+		var abc="<button type=\"button\" class=\"btn btn-light disabled \" id=\"details007\"> Details<span class=\"glyphicon glyphicon-chevron-right\"></span></button>"
+		$("#aloo").html(abc);
+
+		$("#tab").html(html_text);
+	 
+
+	 stored=JSON.parse(localStorage.getItem("name"));
+		for(i=0;i<stored.length;i++){
+			if(stored[i])
+			{
+				$("."+i).css("color", "#FFB700")
+			}
+		}
+
+if(acData.next_page_token){
+
+	htm="<button type=\"button\"  class=\"btn btn-light offset-4\" id=\"next\"> Next</button>";
+
+$("#hello").html(htm);
+console.log(acData.next_page_token);
+
+
+results
+console.log("yo");
+}
+
+$( "#next" ).click(function() {
+	apifirstpage(acData,latitude,longitude);
+})
+
+
+}htmlfav="";
+ names=[];
+vicinity1=[];
+placeid1=[];
+categoru1=[];
+cssprop=[];
+
+
+
+
+function testagain(i,name,vicinity,placeid,categoru,latitude,longitude){
+
+
+if($("."+i).css("color") == "rgb(255, 183, 0)") {
+
+console.log("hoja change");
+	$("."+i).css("color", "black");
+	names[i]=null;
+localStorage.setItem("name", JSON.stringify(names));
+	return;
+}
+
+
+$("."+i+"").css("color", "#FFB700");
+var abc=i;
+var obj = {};
+obj[abc] =  '#FFB700'
+cssprop[i]=obj[abc];
+
+console.log(cssprop);
+ console.log(obj);
+localStorage.setItem("personalize", JSON.stringify(cssprop));
+console.log(localStorage.getItem("personalize"));
+$("."+(i+100)+"").addClass('table-light');
+
+names[i]=name;
+vicinity1[i]=vicinity;
+console.log(vicinity);
+placeid1[i]=placeid;
+categoru1[i]=categoru
+localStorage.setItem("name", JSON.stringify(names));
+localStorage.setItem("vicinity", JSON.stringify(vicinity1));
+localStorage.setItem("placeid", JSON.stringify(placeid1));
+localStorage.setItem("categoru1", JSON.stringify(categoru1));
+//...
+console.log(JSON.parse(localStorage.getItem("vicinity")));
+
+
+
+
+}
+
+
+
+$( "#favtester" ).click(function() {
+
+$("#favtester").addClass('active');
+    $("#results").removeClass("active");
+Array.prototype.isNull = function (){
+    return this.join().replace(/,/g,'').length === 0;
+};
+
+	 storedNames = JSON.parse(localStorage.getItem("name"));
+if(storedNames.isNull())
+	{htmtext="<table  id=\"table\" class=\"table table-warning\">"
+	htmtext+="<thead><tr><th scope=\"col\">No Records</th></tr><thead>";
+	$("#tab").html(htmtext);
+	$("#hello").hide();
+return;}
+
+	htmlfav="<table class=\"table table-hover\">";
+
+	htmlfav+="<thead><tr><th scope=\"col\">#</th><th scope=\"col\">Category</th><th scope=\"col\">Name</th><th scope=\"col\">Address</th><th scope=\"col\">favorite</th><th scope=\"col\">Details</th></tr></thead>";
+	abcdef(htmlfav);
+});
+	function abcdef(htmlfav){
+ storedNames = JSON.parse(localStorage.getItem("name"));
+storedvicinity=JSON.parse(localStorage.getItem("vicinity"));
+storedplaceid=JSON.parse(localStorage.getItem("placeid"));
+storedcategory=JSON.parse(localStorage.getItem("categoru1"));
+console.log(storedNames);
+var a=0;
+
+$("#det").hide();
+$("#heading").hide();
+$("#tabs").hide();
+for(i=0;i<storedNames.length;i++){
+	
+
+	if(storedNames[i]){
+htmlfav+=" <tbody id=\""+(i+60)+"\"><tr ><th scope=\"row\">"+(++a)+"</th><td ><img src="+storedcategory[i]+"></img></td><td class=\" td1\" >"+storedNames[i]+"</td><td class=\" td1\" id=\"vic\">"+storedvicinity[i]+"</td><td><button  style=\"border-color: #ccc\" type=\"button\" class=\"btn btn-light \"  onclick=\"lala("+(i)+","+a+");\" ><span class=\"glyphicon glyphicon-trash\"></span> </button></td><td><button type=\"border-color: #ccc\" id ="+storedplaceid[i]+"  type=\"button\"  onclick=\"generatedetails(this.id,lat1["+i+"],lon1["+i+"],"+latitude+","+longitude+");\" class=\"btn btn-light \" id=\"Details\"><span class=\"glyphicon glyphicon-chevron-right\"></span> </td></tr></tbody>";
+
+			}
+
+		}
+
+
+htmlfav+="</table>";
+	$("#tab").html(htmlfav);
+
+$( "#results" ).click(function() {
+
+gentab(latitude,longitude);
+$("#favtester").removeClass('active');
+    $("#results").addClass("active");
+})
+}
+
+
+$( "#results" ).click(function() {
+gentab(latitude,longitude);
+})
+function lala(ab,a){
+htmlfav123="<table class=\"table table-hover\">";
+
+	htmlfav123+="<thead><tr><th scope=\"col\">#</th><th scope=\"col\">Category</th><th scope=\"col\">Name</th><th scope=\"col\">Address</th><th scope=\"col\">favorite</th><th scope=\"col\">Details</th></tr></thead>";
+names[ab]=null;
+localStorage.setItem("name", JSON.stringify(names));
+console.log(localStorage.getItem("name"));
+a=a-1;
+ abc=i;
+obj = {};
+obj[abc] =   'black'
+cssprop[i]=obj[abc];
+
+
+console.log(cssprop);
+
+localStorage.setItem("personalize", JSON.stringify(cssprop));
+console.log(localStorage.getItem("personalize"));
+jQuery("#favtester").click();
+}
+
+
+
+
+function hoverba(lala ,placeid,lat,lon,latitude,longitude){
+console.log(placeid);
+
+console.log(placeid);
+
+i=lala-100;
+$("#details007").removeClass('disabled');
+$( "#details007" ).click(function() {
+	console.log(placeid);
+	console.log(lat);
+	console.log(lon);
+	console.log(latitude);
+	console.log(longitude);
+generatedetails(placeid,lat,lon,latitude,longitude);});
+}
+
+
+
+
+function apifirstpage(acData,latitude,longitude){
+
+ $.ajax({
+        url: "/second?nextpage=" + acData.next_page_token ,
+         
+           
+        type: "GET",
+
+        success: function(data) {
+            var acData1 = data;
+firstpage(acData1,latitude,longitude,acData);
+
+        }
+    });
+
+}
+
+
+function firstpage(acData,latitude,longitude,acData1){
+console.log(acData1);
+lat1=[];
+			lon1=[];
+
+			
+			var results=acData.results;
+		
+			html_text="";
+		
+html_text+="<table  id=\"table\" class=\"table table-hover\" align=\"center\">";
+			html_text+="<thead><tr><th scope=\"col\">#</th><th scope=\"col\">Category</th><th scope=\"col\">Name</th><th scope=\"col\">Address</th><th scope=\"col\">favorite</th><th scope=\"col\">Details</th></tr></thead>";
+			for(i=0;i<results.length;i++)
+			{var abclong=latitude;
+			var abclat=longitude;
+				selectedObj=results[i];
+				lat1[i]=results[i].geometry.location.lat;
+				lon1[i]=results[i].geometry.location.lng;
+
+				var lockeys=Object.keys(selectedObj);
+				for(j=0;j<lockeys.length;j++)
+					{if(lockeys[j]=="icon")
+					{	categoru=selectedObj[lockeys[j]];}
+						if(lockeys[j]=="name")
+							{name=selectedObj[lockeys[j]];}
+						if(lockeys[j]=="vicinity")
+							{vicinity=selectedObj[lockeys[j]];}
+						if(lockeys[j]=="place_id")
+							{placeid=selectedObj[lockeys[j]];}
+
+					}name1= name.replace("'", "");
+			html_text+=" <tbody><tr><th scope=\"row\">"+(i+1)+"</th><td ><img src="+categoru+"></img></td><td class=\" td1\" >"+name+"</td><td class=\" td1\" >"+vicinity+"</td><td><button  style=\"border-color: #ccc\" type=\"button\" class=\"btn btn-light "+(20+i)+" \" onclick=\" testagain("+(20+i)+",'"+name1+"','"+vicinity+"','"+placeid+"','"+categoru+"');\" id="+(20+i)+"><span class=\"glyphicon glyphicon-star-empty\"></span> </button></td><td><button type=\"border-color: #ccc\" id ="+placeid+"  type=\"button\"  onclick=\"generatedetails(this.id,lat1["+i+"],lon1["+i+"],"+latitude+","+longitude+");\" class=\"btn btn-light \" id=\"Details\"><span class=\"glyphicon glyphicon-chevron-right\"></span> </td></tr></tbody>";
+					
+			}
+		html_text +=" </table>";
+	
+		$("#tab").html(html_text);
+		
+
+if(acData.next_page_token){
+
+	htm="<div><button type=\"button\"  class=\"btn btn-light  offset-4\" style=\"margin-right:2%; \"  id=\"next\"> Next</button>";
+	htm+="<button type=\"button\"  class=\"btn btn-light  \" id=\"previous\"> Previous</button><div>";
+
+$("#hello").html(htm);
+console.log(acData.next_page_token);
+
+ stored=JSON.parse(localStorage.getItem("name"));
+		for(i=0;i<stored.length;i++){
+			if(stored[i+20])
+			{
+				$("."+i).css("color", "#FFB700")
+			}
+		}
+console.log("yo");
+}
+
+else{$( "#next" ).hide();
+
+	}
+
+
+
+
+
+
+console.log("pilluraja");
+$("#previous").click(function(){
+console.log("ohh")
+generatetable(acData1,latitude,longitude);
+
+});
+
+
+
+$( "#next" ).click(function() {
+	apiSecondpage(acData,latitude,longitude,acData1);
+})
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+function apiSecondpage(acData,latitude,longitude,acData1){
+
+
+ $.ajax({
+        url: "/third?nextpage1=" + acData.next_page_token ,
+         
+           
+        type: "GET",
+
+        success: function(data) {
+            var acData5 = data;
+Secondpage(acData5,latitude,longitude,acData,acData1);
+
+        }
+    });
+
+
+
+}
+
+
+
+
+
+
+
+	function Secondpage(acData,latitude,longitude,acData1,acData2){
+console.log(acData1);
+lat1=[];
+			lon1=[];
+
+			
+			var results=acData.results;
+		
+			html_text="";
+		
+html_text+="<table  id=\"table\" class=\"table table-hover\" align=\"center\">";
+			html_text+="<thead><tr><th scope=\"col\">#</th><th scope=\"col\">Category</th><th scope=\"col\">Name</th><th scope=\"col\">Address</th><th scope=\"col\">favorite</th><th scope=\"col\">Details</th></tr></thead>";
+			for(i=0;i<results.length;i++)
+			{var abclong=latitude;
+			var abclat=longitude;
+				selectedObj=results[i];
+				lat1[i]=results[i].geometry.location.lat;
+				lon1[i]=results[i].geometry.location.lng;
+
+				var lockeys=Object.keys(selectedObj);
+				for(j=0;j<lockeys.length;j++)
+					{if(lockeys[j]=="icon")
+					{	categoru=selectedObj[lockeys[j]];}
+						if(lockeys[j]=="name")
+							{name=selectedObj[lockeys[j]];}
+						if(lockeys[j]=="vicinity")
+							{vicinity=selectedObj[lockeys[j]];}
+						if(lockeys[j]=="place_id")
+							{placeid=selectedObj[lockeys[j]];}
+
+					}name1= name.replace("'", "");
+
+			html_text+=" <tbody><tr><th scope=\"row\">"+(i+1)+"</th><td ><img src="+categoru+"></img></td><td class=\" td1\" >"+name+"</td><td class=\" td1\" >"+vicinity+"</td><td><button  style=\"border-color: #ccc\" type=\"button\" class=\"btn btn-light "+(40+i)+" \" onclick=\" testagain("+(40+i)+",'"+name1+"','"+vicinity+"','"+placeid+"','"+categoru+"');\" id="+(40+i)+"><span class=\"glyphicon glyphicon-star-empty\"></span> </button></td><td><button type=\"border-color: #ccc\" id ="+placeid+"  type=\"button\"  onclick=\"generatedetails(this.id,lat1["+i+"],lon1["+i+"],"+latitude+","+longitude+");\" class=\"btn btn-light \" id=\"Details\"><span class=\"glyphicon glyphicon-chevron-right\"></span> </td></tr></tbody>";
+					
+			}
+		html_text +=" </table>";
+		
+		$("#tab").html(html_text);
+		
+
+if(acData.next_page_token){
+
+	htm="<button  type=\"button\"  class=\"btn btn-light col-12 offset-2 offset-sm-4 offset-md-6\" id=\"next\"> Next</button>";
+
+$("#hello").html(htm);
+console.log(acData.next_page_token);
+ stored=JSON.parse(localStorage.getItem("name"));
+		for(i=0;i<stored.length;i++){
+			if(stored[i+40])
+			{
+				$("."+i).css("color", "#FFB700")
+			}
+		}
+
+console.log("yo");
+}
+
+else{$( "#next" ).hide();
+
+	}
+
+htm="<button type=\"button\"  class=\"btn btn-light  offset-md-6\" id=\"previous\"> Previous</button>";
+$("#hello").html(htm);
+$("#previous").click(function(){
+console.log("ohh")
+firstpage(acData1,latitude,longitude,acData2);
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+function generatedetails(placeid,lat,lon,currlat,currlon){
+
+
+	
+var request = {
+  placeId: placeid
+};
+
+service = new google.maps.places.PlacesService(document.getElementById("details1"));
+
+
+service.getDetails(request, callback);
+
+function callback(place,status){
+
+	 if (status == google.maps.places.PlacesServiceStatus.OK) {
+   console.log(place);
+   info(place,lat ,lon,currlat,currlon);
+}
+  }
+
+
+}
+
+function info(place,lat,lon,currlat,currlon){
+ 		
+
+
+
+ 			$("#aloo").hide();
+ 			$("#heading").show();
+ 		$("#tabs").show();
+ 	$("#det").show();
+ 	$("#hello").hide();
+	place1=place.place_id;
+	console.log(place1);
+	address=place.formatted_address;
+	console.log(address);
+	phone=place.international_phone_number;
+	console.log(phone);
+
+	price=place.price_level;
+	console.log(price);
+	rating1=place.rating;
+	console.log(rating1);
+		google1=place.url;
+	console.log(google);
+	website=place.website;
+	console.log(website);
+	name=place.name;
+	console.log(name);
+var d = new Date();
+var n = d.getDay();
+var abc="";
+var monday1="";if(place.opening_hours)
+{var stri=place.opening_hours.weekday_text[0];
+mond=stri.split(" ");
+for(i=1;i<mond.length;i++){
+monday1+=mond[i]+" ";
+
+}
+
+var tuesday1="";
+var stri=place.opening_hours.weekday_text[1];
+mond1=stri.split(" ");
+for(i=1;i<mond1.length;i++){
+tuesday1+=mond1[i]+" ";
+
+}
+
+
+var wednesday1="";
+var stri=place.opening_hours.weekday_text[2];
+mond2=stri.split(" ");
+for(i=1;i<mond2.length;i++){
+wednesday1+=mond2[i]+" ";
+
+}
+
+
+
+var thursday1="";
+var stri=place.opening_hours.weekday_text[3];
+mond2=stri.split(" ");
+for(i=1;i<mond2.length;i++){
+thursday1+=mond2[i]+" ";
+
+}
+
+
+var friday1="";
+var stri=place.opening_hours.weekday_text[4];
+mond3=stri.split(" ");
+for(i=1;i<mond3.length;i++){
+friday1+=mond3[i]+" ";
+
+}
+
+
+var saturday1="";
+var stri=place.opening_hours.weekday_text[5];
+mond4=stri.split(" ");
+for(i=1;i<mond4.length;i++){
+saturday1+=mond4[i]+" ";
+
+}
+
+var sunday1="";
+var stri=place.opening_hours.weekday_text[3];
+mond5=stri.split(" ");
+for(i=1;i<mond5.length;i++){
+sunday1+=mond2[i]+" ";
+
+}}
+
+ console.log(monday1);
+	html2="";
+	html2+="<table  id=\"table1\" class=\"table table-striped\" align=\"center\">";
+	if(typeof(address) != "undefined")
+	{html2+="<tbody><tr> <th scope=\"col\">Address</th><td >"+address+"</td></tr>";}
+if(typeof(phone) != "undefined"){
+	html2+="<tr> <th scope=\"col\">Phone Number</th><td >"+phone+"</td></tr>";}
+	if(typeof(price) != "undefined"){
+		for( i=0; i<price; i++){abc+="$"}
+	html2+="<tr> <th scope=\"col\">Price Level</th><td >"+abc+"</td></tr>";}
+	if (typeof(rating1) != "undefined"){
+	html2+="<tr> <th  scope=\"col\">Rating</th><td  ><span>"+rating1+" </span><span id=\"rateYo\" ></span></td></tr>";}
+	if (typeof(google1) != "undefined"){
+	html2+="<tr> <th scope=\"col\">Google Page</th><td ><a target=\"_blank\" href=\""+google1+"\">"+google1+"</a></td></tr>";}
+if (typeof(website) != "undefined"){
+	html2+="<tr> <th scope=\"col\">Website</th><td ><a target=\"_blank\" href=\""+website+"\">"+website+"</a></td></tr>";}
+	
+console.log(n);
+	if(typeof(place.opening_hours) != "undefined"){
+		if(n==1){
+	html2+="<tr> <th scope=\"col\">Hours</th><td >Open Now: "+monday1+"<a href=\"\"  data-toggle=\"modal\" data-target=\"#exampleModal\">Daily open hours</a><div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\"> <div class=\"modal-dialog\" role=\"document\"> <div class=\"modal-content\"> <div class=\"modal-header\"><h5 class=\"modal-title\" id=\"exampleModalLabel\">Open hours</h5> <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"> <span aria-hidden=\"true\">&times;</span></button></div><div class=\"modal-body\"><h5>"+place.opening_hours.weekday_text[0]+"</h5><hr>"+place.opening_hours.weekday_text[1]+"<hr>"+place.opening_hours.weekday_text[2]+"<hr>"+place.opening_hours.weekday_text[3]+"<hr>"+place.opening_hours.weekday_text[4]+"<hr>"+place.opening_hours.weekday_text[5]+"<hr>"+place.opening_hours.weekday_text[6]+"</div><div class=\"modal-footer\"><button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button></div></div></div></div></td></tr>";}
+if(n==2){
+	html2+="<tr> <th scope=\"col\">Hours</th><td >Open Now: "+tuesday1+"<a href=\"\"  data-toggle=\"modal\" data-target=\"#exampleModal\">Daily open hours</a><div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\"> <div class=\"modal-dialog\" role=\"document\"> <div class=\"modal-content\"> <div class=\"modal-header\"><h5 class=\"modal-title\" id=\"exampleModalLabel\">Open hours</h5> <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"> <span aria-hidden=\"true\">&times;</span></button></div><div class=\"modal-body\"><h5>"+place.opening_hours.weekday_text[1]+"</h5><hr>"+place.opening_hours.weekday_text[2]+"<hr>"+place.opening_hours.weekday_text[3]+"<hr>"+place.opening_hours.weekday_text[4]+"<hr>"+place.opening_hours.weekday_text[5]+"<hr>"+place.opening_hours.weekday_text[6]+"<hr>"+place.opening_hours.weekday_text[0]+"</div><div class=\"modal-footer\"><button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button></div></div></div></div></td></tr>";}
+	if(n==3){
+	html2+="<tr> <th scope=\"col\">Hours</th><td >Open Now: "+wednesday1+"<a href=\"\"  data-toggle=\"modal\" data-target=\"#exampleModal\">Daily open hours</a><div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\"> <div class=\"modal-dialog\" role=\"document\"> <div class=\"modal-content\"> <div class=\"modal-header\"><h5 class=\"modal-title\" id=\"exampleModalLabel\">Open hours</h5> <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"> <span aria-hidden=\"true\">&times;</span></button></div><div class=\"modal-body\"><hr><h5>"+place.opening_hours.weekday_text[2]+"</h5><hr>"+place.opening_hours.weekday_text[3]+"<hr>"+place.opening_hours.weekday_text[4]+"<hr>"+place.opening_hours.weekday_text[5]+"<hr>"+place.opening_hours.weekday_text[6]+"<hr>"+place.opening_hours.weekday_text[0]+"<hr>"+place.opening_hours.weekday_text[1]+"</div><div class=\"modal-footer\"><button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button></div></div></div></div></td></tr>";}
+	if(n==4){
+	html2+="<tr> <th scope=\"col\">Hours</th><td >Open Now: "+thursday1+"<a href=\"\"  data-toggle=\"modal\" data-target=\"#exampleModal\">Daily open hours</a><div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\"> <div class=\"modal-dialog\" role=\"document\"> <div class=\"modal-content\"> <div class=\"modal-header\"><h5 class=\"modal-title\" id=\"exampleModalLabel\">Open hours</h5> <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"> <span aria-hidden=\"true\">&times;</span></button></div><div class=\"modal-body\"><hr><h5>"+place.opening_hours.weekday_text[3]+"</h5><hr>"+place.opening_hours.weekday_text[4]+"<hr>"+place.opening_hours.weekday_text[5]+"<hr>"+place.opening_hours.weekday_text[6]+"<hr>"+place.opening_hours.weekday_text[0]+"<hr>"+place.opening_hours.weekday_text[1]+"<hr>"+place.opening_hours.weekday_text[2]+"</div><div class=\"modal-footer\"><button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button></div></div></div></div></td></tr>";}
+	if(n==5){
+	html2+="<tr> <th scope=\"col\">Hours</th><td >Open Now: "+friday1+"<a href=\"\"  data-toggle=\"modal\" data-target=\"#exampleModal\">Daily open hours</a><div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\"> <div class=\"modal-dialog\" role=\"document\"> <div class=\"modal-content\"> <div class=\"modal-header\"><h5 class=\"modal-title\" id=\"exampleModalLabel\">Open hours</h5> <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"> <span aria-hidden=\"true\">&times;</span></button></div><div class=\"modal-body\"><hr><h5>"+place.opening_hours.weekday_text[4]+"</h5><hr>"+place.opening_hours.weekday_text[5]+"<hr>"+place.opening_hours.weekday_text[6]+"<hr>"+place.opening_hours.weekday_text[0]+"<hr>"+place.opening_hours.weekday_text[1]+"<hr>"+place.opening_hours.weekday_text[2]+"<hr>"+place.opening_hours.weekday_text[3]+"</div><div class=\"modal-footer\"><button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button></div></div></div></div></td></tr>";}
+	if(n==6){
+	html2+="<tr> <th scope=\"col\">Hours</th><td >Open Now: "+saturday1+"<a href=\"\"  data-toggle=\"modal\" data-target=\"#exampleModal\">Daily open hours</a><div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\"> <div class=\"modal-dialog\" role=\"document\"> <div class=\"modal-content\"> <div class=\"modal-header\"><h5 class=\"modal-title\" id=\"exampleModalLabel\">Open hours</h5> <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"> <span aria-hidden=\"true\">&times;</span></button></div><div class=\"modal-body\"><hr><h5>"+place.opening_hours.weekday_text[5]+"</h5><hr>"+place.opening_hours.weekday_text[6]+"<hr>"+place.opening_hours.weekday_text[0]+"<hr>"+place.opening_hours.weekday_text[1]+"<hr>"+place.opening_hours.weekday_text[2]+"<hr>"+place.opening_hours.weekday_text[3]+"<hr>"+place.opening_hours.weekday_text[4]+"</div><div class=\"modal-footer\"><button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button></div></div></div></div></td></tr>";}
+	if(n==0){
+	html2+="<tr> <th scope=\"col\">Hours</th><td >Open Now: "+sunday1+"<a href=\"\"  data-toggle=\"modal\" data-target=\"#exampleModal\">Daily open hours</a><div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\"> <div class=\"modal-dialog\" role=\"document\"> <div class=\"modal-content\"> <div class=\"modal-header\"><h5 class=\"modal-title\" id=\"exampleModalLabel\">Open hours</h5> <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"> <span aria-hidden=\"true\">&times;</span></button></div><div class=\"modal-body\"><hr><h5>"+place.opening_hours.weekday_text[6]+"</h5><hr>"+place.opening_hours.weekday_text[0]+"<hr>"+place.opening_hours.weekday_text[1]+"<hr>"+place.opening_hours.weekday_text[2]+"<hr>"+place.opening_hours.weekday_text[3]+"<hr>"+place.opening_hours.weekday_text[4]+"<hr>"+place.opening_hours.weekday_text[5]+"</div><div class=\"modal-footer\"><button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button></div></div></div></div></td></tr>";}
+
+}
+
+
+
+
+
+	html2+="</tbody></table>";
+	
+htmlbut="<button type=\"button\" class=\"btn btn-light  col-2  \" onclick=\"gentab1("+currlat+","+currlon+")\" id=\"details\"><span class=\"glyphicon glyphicon-chevron-left\"></span> List</button><button  style=\"border-color: #ccc;width:40px; \" type=\"button\" class=\"btn btn-light  offset-7 \"style=\"margin-right:4%;width:5%;height:5%;\"  id=\"fav2\"> <span class=\"glyphicon glyphicon-star-empty\"></span> </button><button  style=\"border-color: #ccc ;width:40px;height:37px;\" type=\"button\" class=\"btn btn-light  col-1\" id=\"twiiter\"><img style=\"width:15px; \" src=\"http://cs-server.usc.edu:45678/hw/hw8/images/Twitter.png\"></img> </button>"
+htmlhead="<div style=\"font-size: 20px;\" class=\"col-7 offset-3\"><strong>"+name+"</div>";
+
+
+htmltabs="";
+htmltabs+="<ul class=\"nav nav-tabs justify-content-end\"><li class=\"nav-item\"><a class=\"nav-link active\" id=\"info\" href=\"#tab\">info</a></li><li class=\"nav-item\"><a id=\"pics\"   class=\"nav-link\" href=\"#tab\">Photos</a></li><li class=\"nav-item\"><a id=\"maps\" class=\"nav-link\"  href=\"#tab\">Map</a></li><li class=\"nav-item\"><a id=\"review\" class=\"nav-link \" href=\"#tab\">Reviews</a></li></ul>";
+
+
+
+$(function () {
+ 
+  console.log(rating1);
+  $("#rateYo").rateYo({
+      precision: 2,
+     rating: (rating1/Math.ceil(rating1))*100 + "%",
+    starWidth: "20px",
+  readOnly: true,
+   numStars: Math.ceil(rating1),
+  });
+ 
+});
+
+$( "#details" ).hide();
+$("#det").show();
+$("#heading").show();
+$("#tabs").show();
+$("#det").html(htmlbut);
+$("#heading").html(htmlhead);
+$("#tabs").html(htmltabs);
+$("#tab").html(html2);
+
+$( "#pics" ).click(function() {
+  $("#pics").addClass('active');
+    $("#info").removeClass("active");
+    $("#review").removeClass('active');
+  info1(place,lat,lon,currlat,currlon);
+});
+
+$( "#maps" ).click(function() {
+  $("#maps").addClass('active');
+    $("#info").removeClass("active");
+    $("#pics").removeClass("active");
+$("#review").removeClass('active');
+  initMap(place,lat,lon,currlat,currlon);
+});
+
+$( "#review" ).click(function() {
+  $("#review").addClass('active');
+    $("#info").removeClass("active");
+    $("#pics").removeClass("active");
+    $("#maps").removeClass('active');
+  review(place,lat,lon,currlat,currlon);
+});
+
+
+$( "#twiiter" ).click(function() {
+ window.open(" http://twitter.com/intent/tweet?text=Check out "+place.name+" located at "+address+".Website: "+website+" %23TravelAndEntertainmentSearch", "twitter", "width=500,height=500")
+  
+});
+
+
+
+}
+
+
+function gentab1(currlat,currlon){
+	$("#det").hide();
+		$("#tabs").hide();
+		$("#heading").hide();
+	gentab(currlat,currlon);
+
+    }
+
+
+
+function info1(place,lat,lon,currlat,currlon)
+{
+
+  var photos = place.photos;
+  if (!photos) {
+
+
+	htmtext="<table  id=\"table\" class=\"table table-warning\">"
+	htmtext+="<thead><tr><th scope=\"col\">No Records</th></tr><thead>";
+	$("#tab").html(htmtext);
+	$("#hello").hide();
+	return;
+}
+
+
+   
+ htmlimg="";
+ photos.forEach(function (photo) {
+    var photos1 = photo.getUrl({
+       
+        maxWidth: 750,
+       
+        maxHeight: 750
+    });
+    console.log(url);
+      htmlimg+="<a target=\"_blank\" href=\""+photos1+"\"><img style=\"height:200px; margin-bottom :2%; \" class=\"col-md-3\" class=\"img-fluid\" src=\" "+photos1+"\" alt=\"\"></img></a>";
+});
+
+
+
+
+
+$("#tab").html(htmlimg);
+$("#hello").hide();
+$( "#info" ).click(function() {
+  $("#info").addClass('active');
+    $("#pics").removeClass("active");
+    $("#review").removeClass('active');
+      $("#maps").removeClass('active');
+  info(place,lat,lon,currlat,currlon);
+});
+$( "#maps" ).click(function() {
+  $("#maps").addClass('active');
+    $("#info").removeClass("active");
+    $("#pics").removeClass("active");
+    $("#review").removeClass('active');
+
+  initMap(place,lat,lon,currlat,currlon);
+});
+
+$( "#review" ).click(function() {
+  $("#review").addClass('active');
+    $("#info").removeClass("active");
+    $("#pics").removeClass("active");
+    $("#maps").removeClass('active');
+  review(place,lat,lon,currlat,currlon);
+});
+}
+</script>
+<script type="text/javascript">
+function initMap(place,lat,lon,currlat,currlon){
+$("#hello").show();
+$( "#pics" ).click(function() {
+  $("#pics").addClass('active');
+    $("#info").removeClass("active");
+    $("#maps").removeClass('active');
+  info1(place,lat,lon,currlat,currlon);
+});
+$( "#info" ).click(function() {
+  $("#pics").removeClass('active');
+    $("#info").addClass("active");
+    $("#maps").removeClass('active');
+  info(place,lat,lon,currlat,currlon);
+});
+
+$( "#review" ).click(function() {
+  $("#review").addClass('active');
+    $("#info").removeClass("active");
+    $("#pics").removeClass("active");
+    $("#maps").removeClass('active');
+  review(place,lat,lon,currlat,currlon);
+});
+console.log(lat);
+console.log(lon);
+console.log(currlat);
+console.log(currlon);
+	htmlmap="";
+	 htmlmap+="<form><div class=\"form-row\"> <div class=\"form-group col-12 col-md-3\"> <label for=\"from\">From</label><input type=\"text\" class=\"form-control col-12\" id=\"from\" value=\"Your Location\"></div>  <div class=\"form-group col-12 col-md-3\"><label for=\"to\">To</label><input type=\"text\" class=\"form-control\" id=\"to\" value=\""+place.name+"\" readonly > </div><div class=\"form-group col-12 col-md-2\"> <label for=\"travel\">Travel Mode</label><select  class=\"form-control form-control-lg col-12 col-md-12\" id=\"travel\"><option value=\"DRIVING\" selected >Driving</option><option value=\"BICYCLING\" >Bicycling</option>	<option value=\"TRANSIT\">Transit</option><option value=\"WALKING\">Walking</option></select></div><div class=\" form-group col-3 col-md-3\"><label for=\"getdirection\"></label><button type=\"button\" style=\"margin-bottom:2%; margin-top:20px; \" class=\"btn btn-primary \" id=\"getdirection\">Get Directions</button></div>  </div></form><div style=\"margin-bottom:6px;\" class=\"col-3 col-md-1\"><button type=\"button\"style=\"border-color: #ccc\" class=\"btn \" id=\"getstreet\"><img id=\"hero\"  src=\"http://cs-server.usc.edu:45678/hw/hw8/images/Pegman.png\"></img></button></div>";
+	
+	 htmlmap1="<div><div class=\"col-md-12\" id=\"map\"></div>";
+htmlmap1+="<div  id=\"directionsPanel\"></div></div>";	
+
+	$("#tab").html(htmlmap);
+	$("#hello").html(htmlmap1);
+var input1=document.getElementById('from');
+var autocomplete1=new google.maps.places.Autocomplete(input1);
+        // CREATING MAP DIV
+      
+        //document.getElementById(addr_id).appendChild(div);
+      function autocomplete(){
+	var input1=document.getElementById('from');
+	var autocomplete=new google.maps.places.Autocomplete(input1);
+
+} 
+
+      console.log("yy"); 
+           	var uluru = {lat: lat, lng: lon};
+	var mapOptions = {
+    zoom: 14,
+    center: uluru
+  }
+  var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+  
+
+            var marker = new google.maps.Marker({
+            position: uluru,
+              map: map
+            });
+
+               directionsService = new google.maps.DirectionsService();
+  directionsDisplay = new google.maps.DirectionsRenderer();
+    directionsDisplay.setMap(map);
+   directionsDisplay.setPanel(document.getElementById('directionsPanel'));
+  
+
+  
+  $( "#getdirection" ).click(function() {
+  
+if(document.getElementById("from").value=="Your Location")
+  {var haight = new google.maps.LatLng(currlat, currlon);}
+else {
+	var haight=document.getElementById("from").value;
+}
+var oceanBeach = new google.maps.LatLng(lat, lon);
+var travelmode1=document.getElementById("travel").value;
+console.log(haight);
+  console.log(oceanBeach);
+  var selectedMode =travelmode1;
+  var request = {
+      origin: haight,
+      destination: oceanBeach,
+      provideRouteAlternatives: true,
+      // Note that Javascript allows us to access the constant
+      // using square brackets and a string value as its
+      // "property."
+      travelMode: google.maps.TravelMode[selectedMode]
+  };
+  console.log("bhenchod");
+  directionsService.route(request, function(response, status) {
+    console.log("hero");
+    if (status == 'OK') {
+      directionsDisplay.setDirections(response);
+      console.log("bhechod");
+    }
+  });
+
+});
+
+$( "#getstreet" ).click(function() {
+
+if (document.getElementById("hero").src == "http://cs-server.usc.edu:45678/hw/hw8/images/Pegman.png"){
+var fenway = {lat: lat, lng: lon};
+var panorama = new google.maps.StreetViewPanorama(
+      document.getElementById('map'), {
+        position: fenway,
+        pov: {
+          heading: 34,
+          pitch: 10
+        }
+      });
+  map.setStreetView(panorama);
+document.getElementById("hero").src = "http://cs-server.usc.edu:45678/hw/hw8/images/Map.png"
+}
+
+else{
+ document.getElementById("hero").src = "http://cs-server.usc.edu:45678/hw/hw8/images/Pegman.png";
+  uluru = {lat: lat, lng: lon};
+	var mapOptions = {
+    zoom: 14,
+    center: uluru
+  }
+  map = new google.maps.Map(document.getElementById('map'), mapOptions);
+  
+
+             marker = new google.maps.Marker({
+            position: uluru,
+              map: map
+            });
+	directionsDisplay.setMap(map);
+
+ }
+
+
+});
+
+
+
+}
+
+  
+function review(place,lat,lon,currlat,currlon){
+if(!place.reviews){
+$("#hello").show();
+	htmtext="<table  id=\"table\" class=\"table table-warning\">"
+	htmtext+="<thead><tr><th scope=\"col\">No Records</th></tr><thead>";
+	htmlreview="";
+	htmlreview+="<div style=\"margin-bottom:2%\" class=\"col-md-12 btn-group\"><div class=\"dropdown col-md-2 \"> <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton1\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Google Reviews </button><div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\"> <a class=\"dropdown-item\" id=\"lala\" href=\"#tab\">Google Reviews</a> <a class=\"dropdown-item\" id=\"yelp\" href=\"#tab\">Yelp Reviews</a></div></div><div class=\"dropdown col-md-2\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Default Order</button><div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\"><a class=\"dropdown-item\" id=\"default1\" href=\"#tab\"> Default Order</a> <a class=\"dropdown-item\" id=\"HighestRat\" href=\"#tab\"> Highest Rating</a><a id=\"lowrat\" class=\"dropdown-item\" href=\"#tab\"> Lowest Rating</a><a id=\"mostrec\" class=\"dropdown-item\" href=\"#tab\"> Most Recent</a> <a id=\"leastrec\" class=\"dropdown-item\" href=\"#tab\"> Least Recent </a></div></div></div>"
+
+
+	
+	$("#tab").html(htmlreview);
+$("#hello").html(htmtext);
+
+	$( "#default1" ).click(function() {
+  $("#dropdownMenuButton").text($(this).text());
+    
+
+
+
+});
+
+$( "#yelp" ).click(function() {
+  $("#dropdownMenuButton1").text($(this).text());
+ 
+
+
+
+});
+
+
+$( "#HighestRat" ).click(function() {
+  $("#dropdownMenuButton").text($(this).text());
+
+
+
+});
+$( "#lowrat" ).click(function() {
+	  $("#dropdownMenuButton").text($(this).text());
+
+
+
+});
+
+$( "#mostrec" ).click(function() {
+	  $("#dropdownMenuButton").text($(this).text());
+
+
+
+});
+
+$( "#leastrec" ).click(function() {
+		   $("#dropdownMenuButton").text($(this).text());
+
+
+});
+
+
+	return;
+}
+$("#hello").show();
+console.log("ts")
+	htmlreview="";
+	htmlreview+="<span class=\"dropdown col-4 \"> <button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton1\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Google Reviews </button><div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\"> <a class=\"dropdown-item\" id=\"lala\" href=\"#tab\">Google Reviews</a> <a class=\"dropdown-item\" id=\"yelp\" href=\"#tab\">Yelp Reviews</a></div></span><span class=\"dropdown col-4\"><button class=\"btn btn-secondary dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Default Order</button><div class=\"dropdown-menu\" aria-labelledby=\"dropdownMenuButton\"><a class=\"dropdown-item\" id=\"default1\" href=\"#tab\"> Default Order</a> <a class=\"dropdown-item\" id=\"HighestRat\" href=\"#tab\"> Highest Rating</a><a id=\"lowrat\" class=\"dropdown-item\" href=\"#tab\"> Lowest Rating</a><a id=\"mostrec\" class=\"dropdown-item\" href=\"#tab\"> Most Recent</a> <a id=\"leastrec\" class=\"dropdown-item\" href=\"#tab\"> Least Recent </a></div></span>"
+
+$("#tab").html(htmlreview);
+htmlreview5="";
+ rev= place.reviews;
+
+
+for( i=0; i<rev.length; i++){
+var Seconds = rev[i].time;
+var Date1 = new Date(Seconds*1000);
+dat3=Date1.getMonth()+1;
+if(dat3<10){
+	dat3="0"+dat3;
+}
+var Date1=Date1.toString();
+dat1=Date1.split(' ')[3];
+
+dat4=Date1.split(' ')[2];
+Dat2 = Date1.split(' ')[4];
+
+	htmlreview5+="<table class=\"table\" >";
+
+	htmlreview5+="<tr><td class=\"row\"> <div class=\"col-2\" ><a  target=\"_blank\" href=\""+rev[i].author_url+"\"><img  src=\""+rev[i].profile_photo_url+"\"></img></a></div><div style=\"    margin-left: 30px;\" class=\"col-9\"><span  ><a target=\"_blank\" href=\""+rev[i].author_url+"\">"+rev[i].author_name+"</a><div  id="+(i+80)+"></div><span> "+dat1+"-"+dat3+"-"+dat4+" "+Dat2+ "</span><br><span>"+rev[i].text+"</span></span></div></td></tr>";
+
+
+
+
+
+	htmlreview5+="</table>";
+
+}
+
+$("#hello").html(htmlreview5);
+
+
+ 	for(i=0;i<rev.length;i++){
+console.log(rev[i].rating)
+ $("#"+(i+80)).rateYo({
+      precision: 2,
+     rating: (rev[i].rating/Math.ceil(rev[i].rating))*100 + "%",
+    starWidth: "20px",
+  readOnly: true,
+   numStars: Math.ceil(rev[i].rating),
+  });};
+
+
+$( "#default1" ).click(function() {
+  $("#dropdownMenuButton").text($(this).text());
+    
+
+review(place,dat1,dat3,dat4,Dat2);
+
+});
+
+$( "#yelp" ).click(function() {
+  $("#dropdownMenuButton1").text($(this).text());
+ 
+
+yelp(place,dat1,dat3,dat4,Dat2);
+
+});
+
+
+$( "#HighestRat" ).click(function() {
+  $("#dropdownMenuButton").text($(this).text());
+
+
+Highestrating(place,dat1,dat3,dat4,Dat2);
+
+});
+$( "#lowrat" ).click(function() {
+	  $("#dropdownMenuButton").text($(this).text());
+
+Lowestrating(place,dat1,dat3,dat4,Dat2);
+
+});
+
+$( "#mostrec" ).click(function() {
+	  $("#dropdownMenuButton").text($(this).text());
+
+MostRecent(place,dat1,dat3,dat4,Dat2);
+
+});
+
+$( "#leastrec" ).click(function() {
+		   $("#dropdownMenuButton").text($(this).text());
+  
+LeastRecent(place,dat1,dat3,dat4,Dat2);
+
+});
+
+
+
+}
+
+
+
+
+
+function Highestrating(place,dat1,dat3,dat4,Dat2)
+{	place1=place
+
+	$( "#default1" ).click(function() {
+  $("#dropdownMenuButton").text($(this).text());
+  
+
+review(place1,dat1,dat3,dat4,Dat2);
+
+});
+	var rev= place.reviews;
+	console.log(rev);
+
+ rev.sort(function(a, b){return b.rating - a.rating});
+console.log(place.reviews);
+var rev= place.reviews;
+htmlreview6="";
+
+for( i=0; i<rev.length; i++){
+var Seconds = rev[i].time;
+var Date1 = new Date(Seconds*1000);
+dat3=Date1.getMonth()+1;
+if(dat3<10){
+	dat3="0"+dat3;
+}
+var Date1=Date1.toString();
+dat1=Date1.split(' ')[3];
+
+dat4=Date1.split(' ')[2];
+Dat2 = Date1.split(' ')[4];
+
+	htmlreview6+="<table class=\"table\" >";
+
+	htmlreview6+="<tr><td><a style=\"float:left;\" target=\"_blank\" href=\""+rev[i].author_url+"\"><img src=\""+rev[i].profile_photo_url+"\"></img></a><span><a target=\"_blank\" href=\""+rev[i].author_url+"\">"+rev[i].author_name+"</a><p>"+rev[i].rating+" "+dat1+"-"+dat3+"-"+dat4+" "+Dat2+ "<p/><p>"+rev[i].text+"</p><span></td></tr>";
+
+	htmlreview6+="</table>";
+}
+// for( j=0; j<tester.length; j++){
+// for( i=0; i<tester.length; i++){
+
+
+
+// 	if(tester[i]==abc[j] ){
+
+// var Seconds = rev1[i].time;
+// var Date1 = new Date(Seconds*1000);
+// dat3=Date1.getMonth()+1;
+// if(dat3<10){
+// 	dat3="0"+dat3;
+// }
+// var Date1=Date1.toString();
+// dat1=Date1.split(' ')[3];
+
+// dat4=Date1.split(' ')[2];
+// Dat2 = Date1.split(' ')[4];
+
+
+// htmlreview6+="<table class=\"table\" >";
+
+// 	htmlreview6+="<tr><td><a style=\"float:left;\" target=\"_blank\" href=\""+rev1[i].author_url+"\"><img src=\""+rev1[i].profile_photo_url+"\"></img></a><span><a target=\"_blank\" href=\""+rev1[i].author_url+"\">"+rev1[i].author_name+"</a><p>"+rev1[i].rating+" "+dat1+"-"+dat3+"-"+dat4+" "+Dat2+ "<p/><p>"+rev1[i].text+"</p><span></td></tr>";
+
+// 	htmlreview6+="</table>";
+// 	tester[i]=6;
+// 	break;
+// 	}
+// }
+// }
+
+$("#hello").html(htmlreview6);
+
+
+
+
+$( "#lowrat" ).click(function() {
+Lowestrating(place,dat1,dat3,dat4,Dat2);
+
+});
+
+
+}
+//}
+
+
+
+
+
+function Lowestrating(place,dat1,dat3,dat4,Dat2){
+place2=place
+
+
+$( "#default1" ).click(function() {
+  $("#dropdownMenuButton").text($(this).text());
+   
+
+review(place2,dat1,dat3,dat4,Dat2);
+
+});
+var abc=[];
+
+	var rev= place.reviews;
+	console.log(rev);
+
+rev.sort(function(a, b){return a.rating - b.rating});
+console.log(place.reviews);
+var rev= place.reviews;
+htmlreview6="";
+
+for( i=0; i<rev.length; i++){
+var Seconds = rev[i].time;
+var Date1 = new Date(Seconds*1000);
+dat3=Date1.getMonth()+1;
+if(dat3<10){
+	dat3="0"+dat3;
+}
+var Date1=Date1.toString();
+dat1=Date1.split(' ')[3];
+
+dat4=Date1.split(' ')[2];
+Dat2 = Date1.split(' ')[4];
+
+	htmlreview6+="<table class=\"table\" >";
+
+	htmlreview6+="<tr><td><a style=\"float:left;\" target=\"_blank\" href=\""+rev[i].author_url+"\"><img src=\""+rev[i].profile_photo_url+"\"></img></a><span><a target=\"_blank\" href=\""+rev[i].author_url+"\">"+rev[i].author_name+"</a><p>"+rev[i].rating+" "+dat1+"-"+dat3+"-"+dat4+" "+Dat2+ "<p/><p>"+rev[i].text+"</p><span></td></tr>";
+
+	htmlreview6+="</table>";
+}
+// for( j=0; j<tester.length; j++){
+// for( i=0; i<tester.length; i++){
+
+
+
+// 	if(tester[i]==abc[j] ){
+
+// var Seconds = rev1[i].time;
+// var Date1 = new Date(Seconds*1000);
+// dat3=Date1.getMonth()+1;
+// if(dat3<10){
+// 	dat3="0"+dat3;
+// }
+// var Date1=Date1.toString();
+// dat1=Date1.split(' ')[3];
+
+// dat4=Date1.split(' ')[2];
+// Dat2 = Date1.split(' ')[4];
+
+
+// htmlreview6+="<table class=\"table\" >";
+
+// 	htmlreview6+="<tr><td><a style=\"float:left;\" target=\"_blank\" href=\""+rev1[i].author_url+"\"><img src=\""+rev1[i].profile_photo_url+"\"></img></a><span><a target=\"_blank\" href=\""+rev1[i].author_url+"\">"+rev1[i].author_name+"</a><p>"+rev1[i].rating+" "+dat1+"-"+dat3+"-"+dat4+" "+Dat2+ "<p/><p>"+rev1[i].text+"</p><span></td></tr>";
+
+// 	htmlreview6+="</table>";
+// 	tester[i]=6;
+// 	break;
+// 	}
+// }
+// }
+
+$("#hello").html(htmlreview6);
+
+}
+
+
+
+
+function MostRecent(place,dat1,dat3,dat4,Dat2){
+$( "#default1" ).click(function() {
+  $("#dropdownMenuButton").text($(this).text());
+    
+
+review(place,dat1,dat3,dat4,Dat2);
+
+});
+var abc1=[];
+	var rev1= place.reviews;
+for( i=0;i<rev1.length; i++){
+	abc1[i]=rev1[i].time;
+}
+
+
+ abc1.sort(function(a, b){return b - a});
+console.log(abc1);
+htmlreview8="";
+for( j=0; j<rev1.length; j++){
+for( i=0; i<rev1.length; i++){
+	if(rev1[i].time==abc1[j]){
+
+		var Seconds = rev1[i].time;
+var Date1 = new Date(Seconds*1000);
+dat3=Date1.getMonth()+1;
+if(dat3<10){
+	dat3="0"+dat3;
+}
+var Date1=Date1.toString();
+dat1=Date1.split(' ')[3];
+
+dat4=Date1.split(' ')[2];
+Dat2 = Date1.split(' ')[4];
+htmlreview8+="<table class=\"table\" >";
+
+	htmlreview8+="<tr><td><a style=\"float:left;\" target=\"_blank\" href=\""+rev1[i].author_url+"\"><img src=\""+rev1[i].profile_photo_url+"\"></img></a><span><a target=\"_blank\" href=\""+rev1[i].author_url+"\">"+rev1[i].author_name+"</a><p>"+rev1[i].rating+" "+dat1+"-"+dat3+"-"+dat4+" "+Dat2+ "<p/><p>"+rev1[i].text+"</p><span></td></tr>";
+
+	htmlreview8+="</table>";
+
+	break;
+	}
+}
+}
+$("#hello").html(htmlreview8);
+
+
+}
+
+
+function LeastRecent(place,dat1,dat3,dat4,Dat2){
+$( "#default1" ).click(function() {
+  $("#dropdownMenuButton").text($(this).text());
+
+
+review(place,dat1,dat3,dat4,Dat2);
+
+});
+var abc1=[];
+	var rev1= place.reviews;
+for( i=0;i<rev1.length; i++){
+	abc1[i]=rev1[i].time;
+}
+
+
+ abc1.sort(function(a, b){return a - b});
+console.log(abc1);
+htmlreview8="";
+for( j=0; j<rev1.length; j++){
+for( i=0; i<rev1.length; i++){
+	if(rev1[i].time==abc1[j]){
+
+		var Seconds = rev1[i].time;
+var Date1 = new Date(Seconds*1000);
+dat3=Date1.getMonth()+1;
+if(dat3<10){
+	dat3="0"+dat3;
+}
+var Date1=Date1.toString();
+dat1=Date1.split(' ')[3];
+
+dat4=Date1.split(' ')[2];
+Dat2 = Date1.split(' ')[4];
+htmlreview8+="<table class=\"table\" >";
+
+	htmlreview8+="<tr><td><a style=\"float:left;\" target=\"_blank\" href=\""+rev1[i].author_url+"\"><img src=\""+rev1[i].profile_photo_url+"\"></img></a><span><a target=\"_blank\" href=\""+rev1[i].author_url+"\">"+rev1[i].author_name+"</a><p>"+rev1[i].rating+" "+dat1+"-"+dat3+"-"+dat4+" "+Dat2+ "<p/><p>"+rev1[i].text+"</p><span></td></tr>";
+
+	htmlreview8+="</table>";
+
+	break;
+	}
+}
+}
+$("#hello").html(htmlreview8);
+
+
+
+}
+
+function yelp(place,dat1,dat3,dat4,Dat2){
+
+var abc=[];
+
+var placename=place.name;
+var placeaddress=place.formatted_address;
+address=place.address_components
+for(i=0;i<address.length;i++){
+abc[i]=address[i].types[0];
+}
+console.log(abc);
+for(k=0;k<abc.length;k++){
+
+if(abc[k]=="locality"){
+	var city=k;
+}
+
+if(abc[k]=="administrative_area_level_1"){
+	var state=k;
+}
+
+if(abc[k]=="country"){
+	var country=k;
+}
+
+}
+
+
+var cityvalue=place.address_components[city].long_name;
+var statevalue=place.address_components[state].short_name;
+var countryvalue=place.address_components[country].short_name;
+
+
+console.log(cityvalue);
+console.log(statevalue);
+console.log(countryvalue);
+
+
+
+ $.ajax({
+     url: "/yelp?placename=" + placename + "&placeaddress=" + placeaddress +"&cityvalue=" + cityvalue + "&statevalue=" + statevalue+"&countryvalue=" + countryvalue,
+         
+         
+           
+        type: "GET",
+
+        success: function(data) {
+if(data.businesses[0]){
+           var businessid = data.businesses[0].id;
+
+getyelpreviews(businessid,place);
+        }
+else {
+
+	htmtext="<table  id=\"table\" class=\"table table-warning\">"
+	htmtext+="<thead><tr><th scope=\"col\">No Records</th></tr><thead>";
+	$("#tab").html(htmtext);
+	$("#hello").hide();
+	
+}
+}
+    
+
+    });
+
+
+
+}
+
+function getyelpreviews(businessid,place){
+console.log("ok1");
+ $.ajax({
+     url: "/yelprev?id=" + businessid,
+         
+           
+        type: "GET",
+
+        success: function(data) {
+ yelpreviews(data.reviews,place); 
+
+
+        }
+    });
+
+}
+ function yelpreviews(data,place){
+console.log(data);
+yelpreview5="";
+for(i=0;i<data.length;i++){
+
+var author_name=data[i].user.name;
+console.log(author_name);
+var profile_photo_url=data[i].user.image_url;
+yelpreview5+="<table class=\"table\" >";
+
+ 	yelpreview5+="<tr><td><a style=\"float:left;\" target=\"_blank\" href=\""+data[i].url+"\"><img style=\" height:80px\" src=\""+profile_photo_url+"\"></img></a><span><a target=\"_blank\" href=\""+data[i].url+"\">"+author_name+"</a><p>"+data[i].rating+" "+data[i].time_created+ "<p/><p>"+data[i].text+"</p><span></td></tr>";
+
+ 	yelpreview5+="</table>";
+}
+clicks=0;
+$("#hello").html(yelpreview5);
+
+
+
+
+
+
+
+$( "#lala" ).click(function() {
+
+  $("#dropdownMenuButton1").text($(this).text());
+ 
+
+
+review(place,1,2,3,4);
+
+});
+
+$( "#default1" ).click(function() {
+  $("#dropdownMenuButton").text($(this).text());
+   yelpreviews(data,place)
+
+});
+
+
+
+$( "#HighestRat" ).click(function() {
+  $("#dropdownMenuButton").text($(this).text());
+
+
+Highestrating1(data,place);
+
+});
+$( "#lowrat" ).click(function() {
+	  $("#dropdownMenuButton").text($(this).text());
+
+
+Lowestrating1(data,place);
+});
+
+$( "#mostrec" ).click(function() {
+	  $("#dropdownMenuButton").text($(this).text());
+Mostrec1(data,place);
+
+});
+
+$( "#leastrec" ).click(function() {
+		   $("#dropdownMenuButton").text($(this).text());
+
+Leastrec1(data,place);
+});
+}
+
+
+
+function Highestrating1(data,place){
+	$( "#default1" ).click(function() {
+  $("#dropdownMenuButton").text($(this).text());
+   yelpreviews(data,place)
+
+});
+	$( "#lowrat" ).click(function() {
+	  $("#dropdownMenuButton").text($(this).text());
+
+
+Lowestrating1(data);
+});
+
+$( "#mostrec" ).click(function() {
+	  $("#dropdownMenuButton").text($(this).text());
+Mostrec1(data,place);
+});
+
+$( "#leastrec" ).click(function() {
+		   $("#dropdownMenuButton").text($(this).text());
+
+
+});
+yep=data;
+yep.sort(function(a, b){return b.rating - a.rating});
+console.log(yep);
+yelpreview11="";
+for(i=0;i<yep.length;i++){
+
+var author_name=yep[i].user.name;
+console.log(author_name);
+var profile_photo_url=yep[i].user.image_url;
+yelpreview11+="<table class=\"table\" >";
+
+ 	yelpreview11+="<tr><td><a style=\"float:left;\" target=\"_blank\" href=\""+yep[i].url+"\"><img style=\" height:80px\" src=\""+profile_photo_url+"\"></img></a><span><a target=\"_blank\" href=\""+yep[i].url+"\">"+author_name+"</a><p>"+yep[i].rating+" "+yep[i].time_created+ "<p/><p>"+yep[i].text+"</p><span></td></tr>";
+
+ 	yelpreview11+="</table>";
+}
+
+$("#hello").html(yelpreview11);
+}
+
+function Lowestrating1(data,place){
+	$( "#default1" ).click(function() {
+  $("#dropdownMenuButton").text($(this).text());
+   yelpreviews(data,place)
+
+});
+yep=data;
+yep.sort(function(a, b){return a.rating - b.rating});
+console.log(yep);
+yelpreview12="";
+for(i=0;i<yep.length;i++){
+
+var author_name=yep[i].user.name;
+console.log(author_name);
+var profile_photo_url=yep[i].user.image_url;
+yelpreview12+="<table class=\"table\" >";
+
+ 	yelpreview12+="<tr><td><a style=\"float:left;\" target=\"_blank\" href=\""+yep[i].url+"\"><img style=\" height:80px\" src=\""+profile_photo_url+"\"></img></a><span><a target=\"_blank\" href=\""+yep[i].url+"\">"+author_name+"</a><p>"+yep[i].rating+" "+yep[i].time_created+ "<p/><p>"+yep[i].text+"</p><span></td></tr>";
+
+ 	yelpreview12+="</table>";
+}
+
+$("#hello").html(yelpreview12);
+}
+
+function Mostrec1(data,place){
+	yep=data;
+		$( "#default1" ).click(function() {
+  $("#dropdownMenuButton").text($(this).text());
+   yelpreviews(data,place)
+
+});
+yep=data;
+yep.sort(function(a, b){return new Date(b.time_created) - new Date(a.time_created)});
+console.log(yep);
+yelpreview12="";
+for(i=0;i<yep.length;i++){
+
+var author_name=yep[i].user.name;
+console.log(author_name);
+var profile_photo_url=yep[i].user.image_url;
+yelpreview12+="<table class=\"table\" >";
+
+ 	yelpreview12+="<tr><td><a style=\"float:left;\" target=\"_blank\" href=\""+yep[i].url+"\"><img style=\" height:80px\" src=\""+profile_photo_url+"\"></img></a><span><a target=\"_blank\" href=\""+yep[i].url+"\">"+author_name+"</a><p>"+yep[i].rating+" "+yep[i].time_created+ "<p/><p>"+yep[i].text+"</p><span></td></tr>";
+
+ 	yelpreview12+="</table>";
+}
+
+$("#hello").html(yelpreview12);
+
+}
+
+
+function Leastrec1(data,place){
+	yep=data;
+		$( "#default1" ).click(function() {
+  $("#dropdownMenuButton").text($(this).text());
+   yelpreviews(data,place)
+
+});
+yep=data;
+yep.sort(function(a, b){return new Date(a.time_created) - new Date(b.time_created)});
+console.log(yep);
+yelpreview12="";
+for(i=0;i<yep.length;i++){
+
+var author_name=yep[i].user.name;
+console.log(author_name);
+var profile_photo_url=yep[i].user.image_url;
+yelpreview12+="<table class=\"table\" >";
+
+ 	yelpreview12+="<tr><td><a style=\"float:left;\" target=\"_blank\" href=\""+yep[i].url+"\"><img style=\" height:80px\" src=\""+profile_photo_url+"\"></img></a><span><a target=\"_blank\" href=\""+yep[i].url+"\">"+author_name+"</a><p>"+yep[i].rating+" "+yep[i].time_created+ "<p/><p>"+yep[i].text+"</p><span></td></tr>";
+
+ 	yelpreview12+="</table>";
+}
+
+$("#hello").html(yelpreview12);
+
+}
+
+
+ 
+ 
+
+
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5oz6eKS9FcAqo65IXdbvo4o4YWd_FUGQ&libraries=places&callback=autocomplete"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+
+  </body>
+</html>
